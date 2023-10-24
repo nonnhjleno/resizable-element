@@ -7,7 +7,7 @@ const ResizableElement = () => {
     const handleDrag = e => {
         const newWidth = e.clientX;
         if (newWidth <= 80) {
-            setWidth(0);
+            setWidth(80);
             setShowButton(true);
         } else {
             setWidth(newWidth);
@@ -31,15 +31,18 @@ const ResizableElement = () => {
     };
 
     return (
-        <div style={{display: 'flex'}}>
-            <div
-                className="resizable-element"
-                style={{
-                    width: `${width}px`,
-                    display: width <= 80 ? 'none' : 'block',
-                }}
-                onMouseDown={handleMouseDown}
-            >      Resize Me
+        <div>
+            <div className="flex">
+                <div
+                    style={{
+                        width: `${width}px`,
+                    }}
+                    className={' bg-sky-600 h-24'}
+                >
+                    <p>Resize Me</p>
+                    <button> ← </button>
+                </div>
+                <div id='resizeBar' className='bg-slate-500 w-2 cursor-col-resize' onMouseDown={handleMouseDown}></div>
             </div>
             {
                 showButton && (
